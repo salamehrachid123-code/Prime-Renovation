@@ -2,6 +2,7 @@
   "name": "prime-renovations",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://salamehrachid123-code.github.io/Prime-Renovation",
   "dependencies": {
     "@tabler/icons-react": "^3.35.0",
     "@testing-library/jest-dom": "^5.16.4",
