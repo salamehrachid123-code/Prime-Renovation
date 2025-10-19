@@ -24,7 +24,12 @@ const Contact = ({ language }) => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      // Use different endpoints for development vs production
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/contact' 
+        : 'http://localhost:3001/api/contact';
+        
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

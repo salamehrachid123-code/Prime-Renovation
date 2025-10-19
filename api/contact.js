@@ -1,30 +1,27 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Middleware
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
-  credentials: true
-}));
-app.use(express.json());
-
 // Set SendGrid API key
-const apiKey = process.env.SENDGRID_API_KEY;
-if (!apiKey) {
-  console.error('SENDGRID_API_KEY environment variable is not set');
-  process.exit(1);
-}
-console.log('SendGrid API Key loaded:', apiKey ? 'Yes' : 'No');
-sgMail.setApiKey(apiKey);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Contact form endpoint
-app.post('/api/contact', async (req, res) => {
-  console.log('Contact form submission received:', req.body);
+export default async function handler(req, res) {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
   try {
     const { name, email, phone, service, message } = req.body;
 
@@ -68,26 +65,16 @@ app.post('/api/contact', async (req, res) => {
     // Send email
     await sgMail.send(msg);
 
-    res.json({ 
+    res.status(200).json({ 
       success: true, 
       message: 'Email sent successfully!' 
     });
 
   } catch (error) {
     console.error('Error sending email:', error);
-    console.error('Error details:', error.response?.body || error.message);
     res.status(500).json({ 
       success: false, 
       message: 'Failed to send email. Please try again later.' 
     });
   }
-});
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Server is running' });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+}
