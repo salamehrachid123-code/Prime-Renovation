@@ -79,7 +79,7 @@ function App() {
   );
 
   return (
-    <Router>
+    <Router basename="/Prime-Renovation">
       <div className={`min-h-screen transition-colors duration-300 ${
         darkMode ? 'dark bg-gray-900' : 'bg-prime-cream'
       }`}>

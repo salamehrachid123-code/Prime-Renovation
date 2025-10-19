@@ -15,7 +15,7 @@ const Hero = ({ language }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/200.png')`,
+            backgroundImage: `url('${process.env.PUBLIC_URL}/200.png')`,
             transform: 'translateZ(0)',
             willChange: 'transform'
           }}

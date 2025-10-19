@@ -94,7 +94,7 @@ const Footer = ({ language }) => {
             <div className="lg:col-span-1">
               <div className="flex items-center space-x-2 mb-6">
                 <img 
-                  src="/pr logo transparent.png" 
+                  src={process.env.PUBLIC_URL + "/pr logo transparent.png"} 
                   alt="Prime Renovations" 
                   className="h-8 w-auto"
                 />
