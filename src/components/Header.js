@@ -37,7 +37,7 @@ const Header = ({ darkMode, toggleDarkMode, language, toggleLanguage }) => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-0 hover:opacity-80 transition-opacity duration-300">
             <img 
-              src={process.env.PUBLIC_URL + "/123.png"} 
+              src="/123.png" 
               alt="Prime Renovations" 
               className="h-14 w-auto"
             />
