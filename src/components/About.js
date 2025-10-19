@@ -74,8 +74,8 @@ const About = ({ language }) => {
               
               <p>
                 {language === 'fr' 
-                  ? "Du concept à la réalisation, notre équipe gère tous les aspects de votre rénovation avec professionnalisme et fiabilité. Nous sommes le choix de confiance pour les propriétaires et les entreprises du Grand Montréal, soutenus par une assurance complète et notre licence RBQ #34JV4."
-                  : "From concept to completion, our team handles every aspect of your renovation with professionalism and reliability. We're the trusted choice for homeowners and businesses across Greater Montreal, backed by comprehensive insurance and our RBQ license #34JV4."
+                  ? "Du concept à la réalisation, notre équipe gère tous les aspects de votre rénovation avec professionnalisme et fiabilité. Nous sommes le choix de confiance pour les propriétaires et les entreprises du Grand Montréal, soutenus par une assurance complète et notre licence RBQ."
+                  : "From concept to completion, our team handles every aspect of your renovation with professionalism and reliability. We're the trusted choice for homeowners and businesses across Greater Montreal, backed by comprehensive insurance and our RBQ license."
                 }
               </p>
             </div>

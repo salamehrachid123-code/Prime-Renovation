@@ -219,7 +219,7 @@ const LightingDesignElectricalUpgradesMontreal = ({ language }) => {
                 and commercial renovations across the Greater Montreal area.
               </p>
               <p className="text-gray-300">
-                RBQ License: 34JV4 | Phone: (514) 512-6001 | Email: rachid@prime-renovation.ca
+                RBQ Licensed | Phone: (514) 512-6001 | Email: rachid@prime-renovation.ca
               </p>
             </div>
             <div>

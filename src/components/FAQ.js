@@ -52,8 +52,8 @@ const FAQ = ({ language }) => {
         ? "Êtes-vous un entrepreneur RBQ licencié en rénovation Montréal?"
         : "Are you a licensed RBQ renovation contractor Montreal?",
       answer: language === 'fr' 
-        ? "Absolument. Prime Renovations est entièrement licencié (RBQ #34JV4) et détient une assurance responsabilité civile complète, vous donnant une tranquillité d'esprit totale tout au long de votre projet."
-        : "Absolutely. Prime Renovations is fully licensed (RBQ #34JV4) and carries comprehensive liability insurance, giving you complete peace of mind throughout your project."
+        ? "Absolument. Prime Renovations est entièrement licencié RBQ et détient une assurance responsabilité civile complète, vous donnant une tranquillité d'esprit totale tout au long de votre projet."
+        : "Absolutely. Prime Renovations is fully RBQ licensed and carries comprehensive liability insurance, giving you complete peace of mind throughout your project."
     },
     {
       question: language === 'fr' 
