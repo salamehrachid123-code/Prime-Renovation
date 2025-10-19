@@ -5,8 +5,11 @@ const Contact = ({ language }) => {
     name: '',
     email: '',
     phone: '',
+    service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -15,15 +18,34 @@ const Contact = ({ language }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert(language === 'fr' 
-      ? 'Merci pour votre message! Nous vous répondrons bientôt.' 
-      : 'Thank you for your message! We\'ll get back to you soon.'
-    );
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -150,6 +172,41 @@ const Contact = ({ language }) => {
                 </div>
                 
                 <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {language === 'fr' ? 'Service d\'Intérêt' : 'Service of Interest'}
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-prime-orange focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                  >
+                    <option value="">
+                      {language === 'fr' ? 'Sélectionnez un service' : 'Select a service'}
+                    </option>
+                    <option value="kitchen-renovation">
+                      {language === 'fr' ? 'Rénovation de Cuisine' : 'Kitchen Renovation'}
+                    </option>
+                    <option value="bathroom-renovation">
+                      {language === 'fr' ? 'Rénovation de Salle de Bain' : 'Bathroom Renovation'}
+                    </option>
+                    <option value="basement-renovation">
+                      {language === 'fr' ? 'Rénovation de Sous-sol' : 'Basement Renovation'}
+                    </option>
+                    <option value="painting">
+                      {language === 'fr' ? 'Services de Peinture' : 'Painting Services'}
+                    </option>
+                    <option value="flooring">
+                      {language === 'fr' ? 'Installation de Planchers' : 'Flooring Installation'}
+                    </option>
+                    <option value="other">
+                      {language === 'fr' ? 'Autre' : 'Other'}
+                    </option>
+                  </select>
+                </div>
+                
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     {language === 'fr' ? 'Détails du Projet *' : 'Project Details *'}
                   </label>
@@ -168,11 +225,38 @@ const Contact = ({ language }) => {
                   />
                 </div>
                 
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
+                    <p className="text-green-800 dark:text-green-200">
+                      {language === 'fr' 
+                        ? '✅ Message envoyé avec succès! Nous vous répondrons bientôt.' 
+                        : '✅ Message sent successfully! We\'ll get back to you soon.'
+                      }
+                    </p>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                    <p className="text-red-800 dark:text-red-200">
+                      {language === 'fr' 
+                        ? '❌ Erreur lors de l\'envoi. Veuillez réessayer.' 
+                        : '❌ Error sending message. Please try again.'
+                      }
+                    </p>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full btn-primary text-lg py-4"
+                  disabled={isSubmitting}
+                  className={`w-full btn-primary text-lg py-4 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                  {language === 'fr' ? 'Envoyer le Message' : 'Send Message'}
+                  {isSubmitting 
+                    ? (language === 'fr' ? 'Envoi en cours...' : 'Sending...') 
+                    : (language === 'fr' ? 'Envoyer le Message' : 'Send Message')
+                  }
                 </button>
               </form>
             </div>
