@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Prime-Renovation/static/css/main.768f8cb6.css",
-    "main.js": "/Prime-Renovation/static/js/main.b3fc4ebf.js",
+    "main.js": "/Prime-Renovation/static/js/main.a3f9dc03.js",
     "index.html": "/Prime-Renovation/index.html",
     "main.768f8cb6.css.map": "/Prime-Renovation/static/css/main.768f8cb6.css.map",
-    "main.b3fc4ebf.js.map": "/Prime-Renovation/static/js/main.b3fc4ebf.js.map"
+    "main.a3f9dc03.js.map": "/Prime-Renovation/static/js/main.a3f9dc03.js.map"
   },
   "entrypoints": [
     "static/css/main.768f8cb6.css",
-    "static/js/main.b3fc4ebf.js"
+    "static/js/main.a3f9dc03.js"
   ]
 }
