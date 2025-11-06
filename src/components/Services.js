@@ -35,10 +35,10 @@ const Services = ({ language }) => {
   const services = [
     {
       icon: "🏠",
-      title: language === 'fr' ? "Rénovation de Cuisine Montréal" : "Kitchen Renovation Montreal",
+      title: language === 'fr' ? "Rénovation de Cuisine" : "Kitchen Renovation",
       description: language === 'fr' 
-        ? "Transformez votre maison montréalaise avec nos services experts de rénovation de cuisine. De la conception à la réalisation, nous créons des cuisines fonctionnelles et belles qui améliorent votre quotidien."
-        : "Transform your Montreal home with expert kitchen renovation services. From design to completion, we create functional, beautiful kitchens that enhance your daily life.",
+        ? "Transformez votre maison avec nos services experts de rénovation de cuisine. De la conception à la réalisation, nous créons des cuisines fonctionnelles et belles qui améliorent votre quotidien."
+        : "Transform your home with expert kitchen renovation services. From design to completion, we create functional, beautiful kitchens that enhance your daily life.",
       subtitle: language === 'fr' ? "Services Suggérés:" : "Suggested Services:",
       features: language === 'fr' ? [
         "Rénovation de cuisine & installation d'armoires",
@@ -62,10 +62,10 @@ const Services = ({ language }) => {
     },
     {
       icon: "🏡", 
-      title: language === 'fr' ? "Rénovation Résidentielle Montréal" : "Home Renovation Montreal",
+      title: language === 'fr' ? "Rénovation Résidentielle" : "Home Renovation",
       description: language === 'fr' 
-        ? "Améliorez l'attrait de votre propriété montréalaise avec des rénovations extérieures. Nous servons Laval, l'Ouest-de-l'Île et la Rive-Sud avec une protection toute l'année."
-        : "Boost your Montreal property's curb appeal with exterior renovations. We serve Laval, West Island, and South Shore with year-round protection.",
+        ? "Améliorez l'attrait de votre propriété avec des rénovations extérieures. Nous servons Laval, l'Ouest-de-l'Île et la Rive-Sud avec une protection toute l'année."
+        : "Boost your property's curb appeal with exterior renovations. We serve Laval, West Island, and South Shore with year-round protection.",
       subtitle: language === 'fr' ? "Services Suggérés:" : "Suggested Services:",
       features: language === 'fr' ? [
         "Terrasses, patios & pergolas",
@@ -89,10 +89,10 @@ const Services = ({ language }) => {
     },
     {
       icon: "🏢",
-      title: language === 'fr' ? "Rénovations Commerciales Montréal" : "Commercial Renovations Montreal",
+      title: language === 'fr' ? "Rénovations Commerciales" : "Commercial Renovations",
       description: language === 'fr' 
-        ? "Entrepreneur professionnel en rénovation commerciale Montréal. Nous créons des environnements d'affaires fonctionnels qui favorisent le succès dans le Grand Montréal."
-        : "Professional commercial renovation contractor Montreal. We create functional business environments that drive success across Greater Montreal.",
+        ? "Entrepreneur professionnel en rénovation commerciale. Nous créons des environnements d'affaires fonctionnels qui favorisent le succès."
+        : "Professional commercial renovation contractor. We create functional business environments that drive success.",
       subtitle: language === 'fr' ? "Services Suggérés:" : "Suggested Services:",
       features: language === 'fr' ? [
         "Rénovations de bureaux & redesign",
@@ -128,14 +128,14 @@ const Services = ({ language }) => {
         }`}>
           <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             {language === 'fr' 
-              ? <>Rénovation Résidentielle Montréal <span className="text-prime-orange">& Services Commerciaux</span></>
-              : <>Home Renovation Montreal <span className="text-prime-orange">& Commercial Services</span></>
+              ? <>Rénovation Résidentielle <span className="text-prime-orange">& Services Commerciaux</span></>
+              : <>Home Renovation <span className="text-prime-orange">& Commercial Services</span></>
             }
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {language === 'fr' 
-              ? "Entrepreneur RBQ licencié Montréal offrant rénovations de cuisine, salle de bain et commerciales"
-              : "Licensed RBQ renovation contractor Montreal offering kitchen, bathroom, and commercial renovations"
+              ? "Entrepreneur RBQ licencié offrant rénovations de cuisine, salle de bain et commerciales"
+              : "Licensed RBQ renovation contractor offering kitchen, bathroom, and commercial renovations"
             }
           </p>
         </div>
